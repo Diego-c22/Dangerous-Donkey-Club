@@ -222,9 +222,9 @@ contract DangerousDonkeyClub is ERC721AUpgradeable, OwnableUpgradeable {
      * @custom:restriction Only owner can execute this function
      */
     function getProfits() external onlyOwner {
-        (bool sent, bytes memory data) = payable(msg.sender).call{
-            value: address(this).balance
-        }("");
+        (bool sent, ) = payable(msg.sender).call{value: address(this).balance}(
+            ""
+        );
         require(sent, "Failed to send Ether");
     }
 
@@ -235,23 +235,6 @@ contract DangerousDonkeyClub is ERC721AUpgradeable, OwnableUpgradeable {
      */
     function revelBaseURI(bool status) external onlyOwner {
         ERC721AStorage.layout()._reveled = status;
-    }
-
-    /**
-     * @notice Called with the sale price to determine how much royalty
-     *          is owed and to whom.
-     * @param _tokenId - the NFT asset queried for royalty information
-     * @param _salePrice - the sale price of the NFT asset specified by _tokenId
-     * @return receiver - address of who should be sent the royalty payment
-     * @return royaltyAmount - the royalty payment amount for _salePrice
-     */
-    function royaltyInfo(uint256 _tokenId, uint256 _salePrice)
-        external
-        view
-        returns (address receiver, uint256 royaltyAmount)
-    {
-        uint256 amount = ((_salePrice * 10) / 100);
-        return (owner(), amount);
     }
 
     function getTokensOfAddress(address address_)
