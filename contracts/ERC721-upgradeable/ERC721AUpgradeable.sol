@@ -146,9 +146,7 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
         ERC721AStorage.layout()._preSaleCurrentIndex = _startTokenId();
         ERC721AStorage.layout()._publicSaleCurrentIndex = _startTokenId();
         ERC721AStorage.layout()._freeSaleCurrentIndex = _startTokenId();
-        ERC721AStorage
-            .layout()
-            ._baseUri = "https://ipfs.io/ipfs/QmPKWxB5fhj4XS3P3joV9EFCL8CybrKpLFaQE8n7R7vwqY/";
+        ERC721AStorage.layout()._baseUri = "";
         ERC721AStorage
             .layout()
             ._hiddenBaseUri = "https://ipfs.io/ipfs/hidden_url";
