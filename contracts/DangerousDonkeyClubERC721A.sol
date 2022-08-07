@@ -7,7 +7,10 @@ import "./ERC721-upgradeable/ERC721AUpgradeable.sol";
 
 /** @author Diego Cortes **/
 /** @title Omniverse */
-contract DangerousDonkeyClub is ERC721AUpgradeable, OwnableUpgradeable {
+contract DangerousDonkeyClubCollection is
+    ERC721AUpgradeable,
+    OwnableUpgradeable
+{
     /**
      * @dev Initialize upgradeable storage (constructor).
      * @custom:restriction This function only can be executed one time.
